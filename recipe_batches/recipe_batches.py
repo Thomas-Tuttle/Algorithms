@@ -3,8 +3,20 @@
 import math
 
 def recipe_batches(recipe, ingredients):
-  pass 
+    total_batches = -1
+    for i in recipe:
+        if i in ingredients:
+            if ingredients[i] // recipe[i] < total_batches or total_batches == -1:
+                total_batches = ingredients[i] // recipe[i]
+        else:
+            return 0
+    return total_batches 
 
+
+test_recipe = { 'Cream Cheese': 8, 'Chicken Broth': 0.33, 'Ranch': 0.33, 'Buffalo Sauce': 8 }
+test_ingredients = { 'Cream Cheese': 35, 'Chicken Broth': 7, 'Ranch': 10, 'Buffalo Sauce': 50 } 
+x = recipe_batches(test_recipe, test_ingredients)
+print(f'You can make', x, 'batches')
 
 if __name__ == '__main__':
   # Change the entries of these dictionaries to test 
